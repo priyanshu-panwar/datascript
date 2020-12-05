@@ -1,0 +1,154 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+		<!-- WRAPPER -->
+		<div id="wrapper">
+
+			<div id="shop">
+
+				<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1>Services</h1>
+
+						<ul class="breadcrumb">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li><a href="{% url 'service' %}">Services</a></li>
+							<li class="active">{{ service.title }} ({{ service.subtitle }})</li>
+						</ul>
+					</div>
+				</header>
+
+
+				<section class="container">
+					<div class="row">
+
+						<div class="col-md-9">
+
+							<div class="row">
+								<div class="col-sm-6 col-md-6">
+									<div>
+											<img alt="" class="radius6 img-responsive" src="{{ service.image.url }}">
+										</div>
+								</div>
+
+
+								<div class="col-sm-6 col-md-6">
+
+									<!-- product detail -->
+									<form class="form-inline productDescription noajax" method="get" action="shop-cart.html" role="form">
+
+										<!-- hidden fields -->
+										<input type="hidden" name="action" value="cart_add" />
+										<input type="hidden" name="product_id" value="1" />
+
+										<h2 class="product-title">{{ service.title }}</h2>
+
+										<!-- product unique code -->
+										<h4>{{ service.subtitle }}</h4>
+										<!-- /product unique code -->
+
+										<!-- product description -->
+										<div>
+											<p>
+												{{ service.description|safe }}
+												</p>
+										</div>
+
+											<br/>
+
+										<!-- /product description -->
+
+									<!-- product detail -->
+
+								</div>
+							</div>
+
+							<!-- modal dialog -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+										<div class="modal-header"><!-- modal header -->
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+											<h4 class="modal-title" id="myModalLabel">Subject : Microsoft Power BI</h4>
+										</div><!-- /modal header -->
+
+										<!-- modal body -->
+										<div class="modal-body">
+											<form>
+												<div class="form-group">
+											    <label for="exampleFormControlInput1">Full Name</label>
+											    <input type="full name" class="form-control" id="exampleFormControlInput1" placeholder="First Name & Last Name">
+											  </div>
+												<div class="form-group">
+											    <label for="exampleFormControlInput1">Company Name</label>
+											    <input type="company" class="form-control" id="exampleFormControlInput1" placeholder="My Company">
+											  </div>
+												<div class="form-group">
+											    <label for="exampleFormControlInput1">Telephone</label>
+											    <input type="full name" class="form-control" id="exampleFormControlInput1" placeholder="Telephone">
+											  </div>
+												<div class="form-group">
+											    <label for="exampleFormControlInput1">Email address</label>
+											    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+											  </div>
+												<div class="form-group">
+											    <label for="exampleFormControlTextarea1">Message</label>
+											    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+											  </div>
+												<!-- <button type="submit" class="btn btn-primary">Valider</button> -->
+
+												</div>
+												<!-- /modal body -->
+
+											<div class="modal-footer"><!-- modal footer -->
+												<button class="btn btn-default" data-dismiss="modal">Cancel</button> <button class="btn btn-primary">Send</button>
+											</div><!-- /modal footer -->
+										</form>
+
+									</div>
+								</div>
+							</div>
+
+							<hr />
+
+
+							<!-- CALLOUT -->
+							<div class="bs-callout text-center nomargin-bottom">
+								<h3>Do you like what you see?</h3>
+								<br/>
+								<a class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-envelope"></i> CONTACT US !</a>
+							</div>
+							<!-- /CALLOUT -->
+
+
+						</div>
+
+						<aside class="col-md-3">
+
+							<h3>SERVICES</h3><!-- h3 - have no margin-top -->
+							<ul class="nav nav-list">
+								{% for s in services %}
+								<li><a href="{% url 'service-detail' s.id %}"><i class="fa fa-circle-o"></i> {{ s.title }}</a></li>
+								{% endfor %}
+							</ul>
+
+						</aside>
+
+					</div>
+
+				</section>
+
+			</div>
+		</div>
+		<!-- /WRAPPER -->
+
+
+
+{% endblock content %}

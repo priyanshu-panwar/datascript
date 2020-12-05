@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+		
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->
+
+		<!-- WRAPPER -->
+		<div id="wrapper">
+
+			<div id="shop">
+
+				<!-- PAGE TITLE -->
+				<header id="page-title">
+					<div class="container">
+						<h1>Services</h1>
+
+						<ul class="breadcrumb">
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li class="active">Services</li>
+						</ul>
+					</div>
+				</header>
+
+
+				<section class="container">
+
+					<div class="row top-shop-option">
+
+					</div>
+
+
+					<div class="row">
+						{% for service in services %}
+						<!-- items -->
+						<div class="col-sm-6 col-md-3"><!-- item -->
+							<div class="item-box">
+								<figure>
+									<a class="item-hover" href="{% url 'service-detail' service.id %}">
+										<span class="overlay color2"></span>
+										<span class="inner">
+											<span class="block fa fa-plus fsize20"></span>
+											<strong>SERVICE</strong> DETAILS
+										</span>
+									</a>
+									<img class="img-responsive" src="{{ service.image.url }}" width="260" height="260" alt="">
+								</figure>
+								<div class="item-box-desc">
+									<h4>{{ service.title }}</h4>
+									<small class="styleColor">{{ service.subtitle }}</small>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+						
+
+						<!-- items -->
+
+					</div>
+
+				</section>
+
+			</div>
+
+		</div>
+		<!-- /WRAPPER -->
+
+
+
+{% endblock content %}
